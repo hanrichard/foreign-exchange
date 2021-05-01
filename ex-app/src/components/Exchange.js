@@ -54,10 +54,10 @@ const Exchange = ({ exchangeRate, via, currencies }) => {
     <>
       <Wrapper>
         <ELementWrapper>
-          <InputLabel id="demo-simple-select-label">From</InputLabel>
+          <InputLabel id="from-label">From</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="from-label"
+            id="from-label"
             value={from}
             onChange={handleFromChange}>
             {currencies.map(((currency) => (
@@ -69,10 +69,10 @@ const Exchange = ({ exchangeRate, via, currencies }) => {
         </ELementWrapper>
 
         <ELementWrapper>
-          <InputLabel id="demo-simple-select-label">To</InputLabel>
+          <InputLabel id="to-label">To</InputLabel>
           <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
+            labelId="from-label"
+            id="from-label"
             value={to}
             onChange={handleToChange}>
             {currencies.map(((currency) => (
@@ -85,7 +85,7 @@ const Exchange = ({ exchangeRate, via, currencies }) => {
 
         <ELementWrapper>
           <TextField
-            id="standard-password-input"
+            id="standard-input"
             label="amount"
             type="number"
             value={input}
