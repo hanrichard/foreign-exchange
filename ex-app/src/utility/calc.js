@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 
-export const checkResult = (from, to, via, exchangeRate) => {
+export const checkResult = (from, to, via, exchangeRate, amount) => {
   const onlyUnique = (value, index, self) => self.indexOf(value) === index;
   // eslint-disable-next-line no-shadow
   const calcRate = (from, to) => (exchangeRate[`${from}${to}`] ? exchangeRate[`${from}${to}`] : (1 / exchangeRate[`${to}${from}`]));
@@ -8,6 +8,10 @@ export const checkResult = (from, to, via, exchangeRate) => {
   const arrFrom = [];
   const arrTo = [];
   const newArry = [];
+
+  if (from === to) {
+    return 1;
+  }
   Object.entries(via).forEach(
     ([key, value]) => {
       const findFrom = value.find((i) => i === from);
@@ -35,5 +39,9 @@ export const checkResult = (from, to, via, exchangeRate) => {
     }
   });
 
-  return newArry.reduce((acc, current) => acc * current);
+  const exchangePathRate = Number(newArry.reduce((acc, current) => acc * current));
+  const totalValue = exchangePathRate * amount;
+  const formatTotalValue = to === 'JPY' ? totalValue.toFixed(0) : totalValue.toFixed(2);
+
+  return formatTotalValue;
 };

@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import { checkResult } from '../utility/calc';
 
 const exchangeRate = {
@@ -28,16 +29,22 @@ const Exchange = () => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [result, setResult] = useState(0);
+  const [input, setInput] = useState(1);
 
   const handleFromChange = (event) => {
     setFrom(event.target.value);
   };
+
   const handleToChange = (event) => {
     setTo(event.target.value);
   };
 
   const handleSubmit = () => {
-    setResult(checkResult(from, to, via, exchangeRate));
+    setResult(checkResult(from, to, via, exchangeRate, input));
+  };
+
+  const handleOnInputChange = (event) => {
+    setInput(event.target.value);
   };
 
   return (
@@ -50,6 +57,7 @@ const Exchange = () => {
         onChange={handleFromChange}>
         <MenuItem value="USD">USD</MenuItem>
         <MenuItem value="AUD">AUD</MenuItem>
+        <MenuItem value="DKK">DKK</MenuItem>
       </Select>
 
       <InputLabel id="demo-simple-select-label">To</InputLabel>
@@ -60,7 +68,16 @@ const Exchange = () => {
         onChange={handleToChange}>
         <MenuItem value="USD">USD</MenuItem>
         <MenuItem value="AUD">AUD</MenuItem>
+        <MenuItem value="NOK">NOK</MenuItem>
+        <MenuItem value="JPY">JPY</MenuItem>
       </Select>
+
+      <TextField
+        id="standard-password-input"
+        label="amount"
+        type="number"
+        value={input}
+        onChange={handleOnInputChange} />
 
       <Button onClick={handleSubmit}>Submit</Button>
 
