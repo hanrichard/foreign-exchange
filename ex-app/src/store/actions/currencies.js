@@ -13,6 +13,7 @@ export const setCurrenciesFail = () => ({
 export const initCurrencies = () => (dispatch) => {
   axios.get('data.json')
     .then((response) => {
+      console.log(response.data.data);
       dispatch(setCurrencies(response.data.data));
     })
     .catch((error) => {

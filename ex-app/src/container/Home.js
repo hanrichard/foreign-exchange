@@ -8,14 +8,22 @@ import { getCurrencies } from '../utility/getCurrencies';
 import * as actions from '../store/actions/index';
 
 const App = ({ onInitCurrencies, currencies }) => {
+  const exchangeTable = {
+    USD: ['AUD', 'CAD', 'CNY', 'GBP', 'NZD', 'JPY'],
+    EUR: ['CZK', 'DKK', 'NOK'],
+  };
+
+  console.log(exchangeTable);
+
   useEffect(() => {
     onInitCurrencies();
   }, [onInitCurrencies]);
 
+  console.log('xxx', currencies.currencies.via);
   return (
     <Container>
       <Header />
-      <Exchange exchangeRate={currencies.currencies.exchangeRate} via={currencies.currencies.via} currencies={getCurrencies(currencies.currencies.via)} />
+      <Exchange exchangeRate={currencies.currencies.exchangeRate} via={exchangeTable} currencies={getCurrencies(exchangeTable)} />
     </Container>
   );
 };
