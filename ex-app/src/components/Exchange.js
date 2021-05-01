@@ -56,6 +56,7 @@ const Exchange = ({ exchangeRate, via, currencies }) => {
         <ELementWrapper>
           <InputLabel id="from-label">From</InputLabel>
           <Select
+            data-testid="from"
             labelId="from-label"
             id="from-label"
             value={from}
@@ -71,8 +72,9 @@ const Exchange = ({ exchangeRate, via, currencies }) => {
         <ELementWrapper>
           <InputLabel id="to-label">To</InputLabel>
           <Select
-            labelId="from-label"
-            id="from-label"
+            labelId="to-label"
+            data-testid="to"
+            id="to-label"
             value={to}
             onChange={handleToChange}>
             {currencies.map(((currency) => (
