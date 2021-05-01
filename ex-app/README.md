@@ -1,6 +1,24 @@
-# Getting Started with Create React App
+# Programming Exercise – FX Calculator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The task is to create a web-based currency converter application.
+
+## What's in the project
+
+A web-based react currency converter application.
+
+## Tech stacks
+
+React, redux, style-component, material ui, axios
+
+## Remaining tasks
+
+- Polish up the UI
+- Add more unit tests
+- refactor the business logic
+
+## Running enviorment
+
+lastest node or node v10.15.0+
 
 ## Available Scripts
 
