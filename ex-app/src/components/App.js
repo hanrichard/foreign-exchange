@@ -1,9 +1,26 @@
 import './App.css';
 import React from 'react';
 import Container from '@material-ui/core/Container';
+import { Provider } from 'react-redux';
+import {
+  createStore, applyMiddleware, compose, combineReducers,
+} from 'redux';
+import thunk from 'redux-thunk';
 import Exchange from './Exchange';
 import Header from './Header';
 import { getCurrencies } from '../utility/getCurrencies';
+
+import currenciesReducer from '../store/reducers/currenciesReducer';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({
+  currencies: currenciesReducer,
+});
+
+const store = createStore(rootReducer, composeEnhancers(
+  applyMiddleware(thunk),
+));
 
 const App = () => {
   const exchangeRate = {
@@ -25,10 +42,12 @@ const App = () => {
   };
 
   return (
-    <Container>
-      <Header />
-      <Exchange exchangeRate={exchangeRate} via={exchangeTable} currencies={getCurrencies(exchangeTable)} />
-    </Container>
+    <Provider store={store}>
+      <Container>
+        <Header />
+        <Exchange exchangeRate={exchangeRate} via={exchangeTable} currencies={getCurrencies(exchangeTable)} />
+      </Container>
+    </Provider>
   );
 };
 
