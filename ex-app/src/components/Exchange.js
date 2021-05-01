@@ -50,8 +50,6 @@ const Exchange = () => {
         onChange={handleFromChange}>
         <MenuItem value="USD">USD</MenuItem>
         <MenuItem value="AUD">AUD</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
       </Select>
 
       <InputLabel id="demo-simple-select-label">To</InputLabel>
@@ -62,8 +60,6 @@ const Exchange = () => {
         onChange={handleToChange}>
         <MenuItem value="USD">USD</MenuItem>
         <MenuItem value="AUD">AUD</MenuItem>
-        <MenuItem value={20}>Twenty</MenuItem>
-        <MenuItem value={30}>Thirty</MenuItem>
       </Select>
 
       <Button onClick={handleSubmit}>Submit</Button>
