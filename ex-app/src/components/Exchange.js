@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -7,26 +8,6 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { checkResult } from '../utility/calc';
-
-const exchangeRate = {
-  AUDUSD: 0.8371,
-  CADUSD: 0.8711,
-  USDCNY: 6.1715,
-  EURUSD: 1.2315,
-  GBPUSD: 1.5683,
-  NZDUSD: 0.7750,
-  USDJPY: 119.95,
-  EURCZK: 27.6028,
-  EURDKK: 7.4405,
-  EURNOK: 8.6651,
-};
-
-const via = {
-  USD: ['AUD', 'CAD', 'CNY', 'GBP', 'NZD', 'JPY'],
-  EUR: ['CZK', 'DKK', 'NOK'],
-};
-
-const currencies = ['AUD', 'CAD', 'CNY', 'GBP', 'NZD', 'JPY', 'USD', 'CZK', 'DKK', 'NOK', 'EUR'];
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,7 +23,8 @@ const ResultWrapper = styled.div`
 const ELementWrapper = styled.div`
   margin-right: 50px;
 `;
-const Exchange = () => {
+
+const Exchange = ({ exchangeRate, via, currencies }) => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [result, setResult] = useState();
@@ -78,7 +60,7 @@ const Exchange = () => {
             value={from}
             onChange={handleFromChange}>
             {currencies.map(((currency) => (
-              <MenuItem value={currency}>
+              <MenuItem key={currency} value={currency}>
                 {currency}
               </MenuItem>
             )))}
@@ -93,7 +75,7 @@ const Exchange = () => {
             value={to}
             onChange={handleToChange}>
             {currencies.map(((currency) => (
-              <MenuItem value={currency}>
+              <MenuItem key={currency} value={currency}>
                 {currency}
               </MenuItem>
             )))}
@@ -118,4 +100,15 @@ const Exchange = () => {
   );
 };
 
+Exchange.defaultProps = {
+  exchangeRate: {},
+  via: {},
+  currencies: [],
+};
+
+Exchange.propTypes = {
+  exchangeRate: PropTypes.object,
+  via: PropTypes.object,
+  currencies: PropTypes.array,
+};
 export default Exchange;
