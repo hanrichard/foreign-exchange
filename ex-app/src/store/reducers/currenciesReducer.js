@@ -1,14 +1,14 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  currencies: [],
+  currencies: {},
 };
 
 const currenciesReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_CURRENCIES_SUCCESS:
       return {
-        currencies: true,
+        currencies: action.payload,
       };
     default:
       return state;

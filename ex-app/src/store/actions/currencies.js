@@ -2,18 +2,18 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 
 export const setCurrencies = (payload) => ({
-  type: actionTypes.FETCH_PRODUCTS,
+  type: actionTypes.FETCH_CURRENCIES_SUCCESS,
   payload,
 });
 
 export const setCurrenciesFail = () => ({
-  type: actionTypes.TOKEN_ERROR,
+  type: actionTypes.FETCH_CURRENCIES_FAILED,
 });
 
-export const initProducts = () => (dispatch) => {
-  axios.get('/api/v1/resources/products?token')
+export const initCurrencies = () => (dispatch) => {
+  axios.get('data.json')
     .then((response) => {
-      dispatch(setCurrencies(response.data));
+      dispatch(setCurrencies(response.data.exchangeRate));
     })
     .catch((error) => {
       dispatch(setCurrenciesFail({ error }));
