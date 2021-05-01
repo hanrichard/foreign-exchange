@@ -13,7 +13,7 @@ const HeaderWrapper = styled.div`
 const Header = () => (
   <HeaderWrapper>
     <Typography variant="h3" component="h1" gutterBottom>
-      Foreign exchange app
+      FX Calculator
     </Typography>
   </HeaderWrapper>
 );
