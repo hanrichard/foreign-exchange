@@ -26,6 +26,8 @@ const via = {
   EUR: ['CZK', 'DKK', 'NOK'],
 };
 
+const currencies = ['AUD', 'CAD', 'CNY', 'GBP', 'NZD', 'JPY', 'USD', 'CZK', 'DKK', 'NOK', 'EUR'];
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -48,10 +50,12 @@ const Exchange = () => {
 
   const handleFromChange = (event) => {
     setFrom(event.target.value);
+    setResult();
   };
 
   const handleToChange = (event) => {
     setTo(event.target.value);
+    setResult();
   };
 
   const handleSubmit = () => {
@@ -60,6 +64,7 @@ const Exchange = () => {
 
   const handleOnInputChange = (event) => {
     setInput(event.target.value);
+    setResult();
   };
 
   return (
@@ -72,9 +77,11 @@ const Exchange = () => {
             id="demo-simple-select"
             value={from}
             onChange={handleFromChange}>
-            <MenuItem value="USD">USD</MenuItem>
-            <MenuItem value="AUD">AUD</MenuItem>
-            <MenuItem value="DKK">DKK</MenuItem>
+            {currencies.map(((currency) => (
+              <MenuItem value={currency}>
+                {currency}
+              </MenuItem>
+            )))}
           </Select>
         </ELementWrapper>
 
@@ -85,10 +92,11 @@ const Exchange = () => {
             id="demo-simple-select"
             value={to}
             onChange={handleToChange}>
-            <MenuItem value="USD">USD</MenuItem>
-            <MenuItem value="AUD">AUD</MenuItem>
-            <MenuItem value="NOK">NOK</MenuItem>
-            <MenuItem value="JPY">JPY</MenuItem>
+            {currencies.map(((currency) => (
+              <MenuItem value={currency}>
+                {currency}
+              </MenuItem>
+            )))}
           </Select>
         </ELementWrapper>
 
