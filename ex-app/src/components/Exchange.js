@@ -29,7 +29,7 @@ const Exchange = ({ exchangeRate, via, currencies }) => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const [result, setResult] = useState();
-  const [input, setInput] = useState(1);
+  const [amount, setAmount] = useState(1);
 
   const handleFromChange = (event) => {
     setFrom(event.target.value);
@@ -42,11 +42,11 @@ const Exchange = ({ exchangeRate, via, currencies }) => {
   };
 
   const handleSubmit = () => {
-    setResult(checkResult(from, to, via, exchangeRate, input));
+    setResult(checkResult(from, to, via, exchangeRate, amount));
   };
 
   const handleOnInputChange = (event) => {
-    setInput(event.target.value);
+    setAmount(event.target.value);
     setResult();
   };
 
@@ -88,7 +88,7 @@ const Exchange = ({ exchangeRate, via, currencies }) => {
             id="standard-input"
             label="amount"
             type="number"
-            value={input}
+            value={amount}
             onChange={handleOnInputChange} />
         </ELementWrapper>
 
