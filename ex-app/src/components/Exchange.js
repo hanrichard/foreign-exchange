@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 100px;
+  align-items: center;
 `;
 
 const ResultWrapper = styled.div`
