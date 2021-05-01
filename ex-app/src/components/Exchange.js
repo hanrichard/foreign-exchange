@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -25,10 +26,24 @@ const via = {
   EUR: ['CZK', 'DKK', 'NOK'],
 };
 
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+`;
+
+const ResultWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const ELementWrapper = styled.div`
+  margin-right: 50px;
+`;
 const Exchange = () => {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState();
   const [input, setInput] = useState(1);
 
   const handleFromChange = (event) => {
@@ -48,47 +63,50 @@ const Exchange = () => {
   };
 
   return (
-    <div className="Exchange">
-      <InputLabel id="demo-simple-select-label">From</InputLabel>
-      <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={from}
-        onChange={handleFromChange}>
-        <MenuItem value="USD">USD</MenuItem>
-        <MenuItem value="AUD">AUD</MenuItem>
-        <MenuItem value="DKK">DKK</MenuItem>
-      </Select>
+    <>
+      <Wrapper>
+        <ELementWrapper>
+          <InputLabel id="demo-simple-select-label">From</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={from}
+            onChange={handleFromChange}>
+            <MenuItem value="USD">USD</MenuItem>
+            <MenuItem value="AUD">AUD</MenuItem>
+            <MenuItem value="DKK">DKK</MenuItem>
+          </Select>
+        </ELementWrapper>
 
-      <InputLabel id="demo-simple-select-label">To</InputLabel>
-      <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={to}
-        onChange={handleToChange}>
-        <MenuItem value="USD">USD</MenuItem>
-        <MenuItem value="AUD">AUD</MenuItem>
-        <MenuItem value="NOK">NOK</MenuItem>
-        <MenuItem value="JPY">JPY</MenuItem>
-      </Select>
+        <ELementWrapper>
+          <InputLabel id="demo-simple-select-label">To</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={to}
+            onChange={handleToChange}>
+            <MenuItem value="USD">USD</MenuItem>
+            <MenuItem value="AUD">AUD</MenuItem>
+            <MenuItem value="NOK">NOK</MenuItem>
+            <MenuItem value="JPY">JPY</MenuItem>
+          </Select>
+        </ELementWrapper>
 
-      <TextField
-        id="standard-password-input"
-        label="amount"
-        type="number"
-        value={input}
-        onChange={handleOnInputChange} />
+        <ELementWrapper>
+          <TextField
+            id="standard-password-input"
+            label="amount"
+            type="number"
+            value={input}
+            onChange={handleOnInputChange} />
+        </ELementWrapper>
 
-      <Button onClick={handleSubmit}>Submit</Button>
-
-      <div>
-        {from}
-        -
-        {to}
-        =
-        {result}
-      </div>
-    </div>
+        <Button onClick={handleSubmit}>Submit</Button>
+      </Wrapper>
+      <ResultWrapper>
+        {result && `${from} - ${to} = ${result}`}
+      </ResultWrapper>
+    </>
   );
 };
 
