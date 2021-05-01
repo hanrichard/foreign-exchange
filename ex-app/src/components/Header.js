@@ -11,7 +11,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const Header = () => (
-  <HeaderWrapper>
+  <HeaderWrapper getByTestId="header">
     <Typography variant="h3" component="h1" gutterBottom>
       FX Calculator
     </Typography>
