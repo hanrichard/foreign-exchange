@@ -91,10 +91,10 @@ const Exchange = ({ exchangeRate, via, currencies }) => {
             onChange={handleOnInputChange} />
         </ELementWrapper>
 
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button onClick={handleSubmit} color="primary" variant="contained">Submit</Button>
       </Wrapper>
       <ResultWrapper>
-        {result && `${from} - ${to} = ${result}`}
+        {result && from && to && `${from} - ${to} = ${result}`}
       </ResultWrapper>
     </>
   );
