@@ -8,11 +8,6 @@ import { getCurrencies } from '../utility/getCurrencies';
 import * as actions from '../store/actions/index';
 
 const App = ({ onInitCurrencies, currencies }) => {
-  const exchangeTable = {
-    USD: ['AUD', 'CAD', 'CNY', 'GBP', 'NZD', 'JPY'],
-    EUR: ['CZK', 'DKK', 'NOK'],
-  };
-
   useEffect(() => {
     onInitCurrencies();
   }, [onInitCurrencies]);
@@ -20,7 +15,7 @@ const App = ({ onInitCurrencies, currencies }) => {
   return (
     <Container>
       <Header />
-      <Exchange exchangeRate={currencies.currencies} via={exchangeTable} currencies={getCurrencies(exchangeTable)} />
+      <Exchange exchangeRate={currencies.currencies.exchangeRate} via={currencies.currencies.via} currencies={getCurrencies(currencies.currencies.via)} />
     </Container>
   );
 };
