@@ -43,5 +43,5 @@ export const checkResult = (from, to, via, exchangeRate, amount) => {
   const totalValue = exchangePathRate * amount;
   const formatTotalValue = to === 'JPY' ? totalValue.toFixed(0) : totalValue.toFixed(2);
 
-  return formatTotalValue;
+  return Number(formatTotalValue);
 };
