@@ -20,7 +20,7 @@ const App = ({ onInitCurrencies, currencies }) => {
   return (
     <Container>
       <Header />
-      <Exchange exchangeRate={currencies.currencies.exchangeRate} via={currencies.currencies.via} currencies={getCurrencies(exchangeTable)} />
+      <Exchange exchangeRate={currencies.currencies.exchangeRate} via={exchangeTable} currencies={getCurrencies(exchangeTable)} />
     </Container>
   );
 };
