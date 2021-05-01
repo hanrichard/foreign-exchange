@@ -11,10 +11,6 @@
     "EURCZK": 27.6028,
     "EURDKK": 7.4405,
     "EURNOK": 8.6651
-  },
-  "via": {
-   "USD": ["AUD", "CAD", "CNY", "GBP", "NZD", "JPY"],
-   "EUR": ["CZK", "DKK", "NOK"]
   }
  }
 }

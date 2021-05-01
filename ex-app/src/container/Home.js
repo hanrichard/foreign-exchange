@@ -13,17 +13,14 @@ const App = ({ onInitCurrencies, currencies }) => {
     EUR: ['CZK', 'DKK', 'NOK'],
   };
 
-  console.log(exchangeTable);
-
   useEffect(() => {
     onInitCurrencies();
   }, [onInitCurrencies]);
 
-  console.log('xxx', currencies.currencies.via);
   return (
     <Container>
       <Header />
-      <Exchange exchangeRate={currencies.currencies.exchangeRate} via={exchangeTable} currencies={getCurrencies(exchangeTable)} />
+      <Exchange exchangeRate={currencies.currencies.exchangeRate} via={currencies.currencies.via} currencies={getCurrencies(exchangeTable)} />
     </Container>
   );
 };
